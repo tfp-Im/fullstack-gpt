@@ -34,5 +34,32 @@ cp .env.sample .env
 ```
 
 
+### run streamlit
+```sh
+streamlit run home.py
+```
+
+
+
+### etc
+
+#### error
+AttributeError: partially initialized module 'nltk' has no attribute 'data' (most likely due to a circular import)
+
+run from python command line
+```python
+import nltk
+import ssl
+
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+
+nltk.download()
+```
+
 
 
